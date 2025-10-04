@@ -1,0 +1,49 @@
+# Contains all libraries that are needed for this project
+
+# Data manipulation and analysis
+pandas
+numpy
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Machine learning
+scikit-learn
+xgboost
+lightgbm
+catboost
+
+# Deep learning
+#tensorflow
+#keras
+#torch
+#torchvision
+
+# Data processing
+scipy
+category-encoders
+
+# Jupyter support
+jupyter
+ipykernel
+
+# Model evaluation
+statsmodels
+shap
+
+# Pipeline
+mlflow
+joblib
+
+# Utilities
+tqdm
+imblearn
+
+# Web
+streamlit
+
+# Optional: Data connectors
+sqlalchemy
+openpyxl

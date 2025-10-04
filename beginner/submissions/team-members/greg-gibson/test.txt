@@ -1,0 +1,151 @@
+model	accuracy	recall		confusion_matrix
+0	catboost_scale	0.819861	0.643667	[[6733, 1252], [377, 681]]
+1	xgb_scale_pos_	0.817760	0.638941	[[6719, 1266], [382, 676]]
+2	logreg_balanced	0.763574	0.627599	[[6241, 1744], [394, 664]]
+3	lgbm_scale_pos_	0.826274	0.622873	[[6813, 1172], [399, 659]]
+4	smote_logreg	0.763685	0.619093	[[6251, 1734], [403, 655]]
+5	smote_dt	0.829371	0.333648	[[7147, 838], [705, 353]]
+6	dt_balanced	0.839544	0.309074	[[7265, 720], [731, 327]]
+7	smote_rf	0.891297	0.283554	[[7760, 225], [758, 300]]
+8	smote_lgbm	0.896495	0.283554	[[7807, 178], [758, 300]]
+9	smote_cb	0.896826	0.276938	[[7817, 168], [765, 293]]
+10	smote_xgb	0.896605	0.271267	[[7821, 164], [771, 287]]
+11	rf_balanced	0.894615	0.202268	[[7876, 109], [844, 214]]
+
+	model		accuracy	recall		confusion_matrix
+0	xgb_scale_pos	0.817760	0.638941	[[6719, 1266], [382, 676]]
+1	logreg_balanced	0.763574	0.627599	[[6241, 1744], [394, 664]]
+2	catboost_scale	0.811788	0.622873	[[6682, 1303], [399, 659]]
+3	smote_logreg	0.763685	0.619093	[[6251, 1734], [403, 655]]
+4	lgbm_scale_pos	0.822293	0.609641	[[6791, 1194], [413, 645]]
+5	smote_dt	0.829371	0.333648	[[7147, 838], [705, 353]]
+6	dt_balanced	0.839544	0.309074	[[7265, 720], [731, 327]]
+7	smote_rf	0.891297	0.283554	[[7760, 225], [758, 300]]
+8	smote_lgbm	0.896495	0.283554	[[7807, 178], [758, 300]]
+9	smote_cb	0.896826	0.276938	[[7817, 168], [765, 293]]
+10	smote_xgb	0.896605	0.271267	[[7821, 164], [771, 287]]
+11	rf_balanced	0.894615	0.202268	[[7876, 109], [844, 214]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.85      0.89      7985
+           1       0.36      0.64      0.46      1058
+
+    accuracy                           0.82      9043
+   macro avg       0.65      0.74      0.68      9043
+weighted avg       0.88      0.82      0.84      9043
+
+
+Confusion Matrix:
+[[6762 1223]
+ [ 381  677]]
+
+Recall (Sensitivity): 0.6399
+Precision: 0.3563
+F1-Score: 0.4577
+Accuracy: 0.8226
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.85      0.89      7985
+           1       0.36      0.64      0.46      1058
+
+    accuracy                           0.82      9043
+   macro avg       0.65      0.74      0.68      9043
+weighted avg       0.88      0.82      0.84      9043
+
+
+Confusion Matrix:
+[[6762 1223]
+ [ 381  677]]
+
+Recall (Sensitivity): 0.6399
+Precision: 0.3563
+F1-Score: 0.4577
+Accuracy: 0.8226
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.84      0.89      7985
+           1       0.35      0.65      0.46      1058
+
+    accuracy                           0.82      9043
+   macro avg       0.65      0.75      0.67      9043
+weighted avg       0.88      0.82      0.84      9043
+
+
+Confusion Matrix:
+[[6704 1281]
+ [ 366  692]]
+
+Recall (Sensitivity): 0.6541
+Precision: 0.3507
+F1-Score: 0.4566
+Accuracy: 0.8179
+
+
+[LightGBM] [Info] Start training from score -2.021327
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.86      0.90      7985
+           1       0.37      0.62      0.47      1058
+
+    accuracy                           0.83      9043
+   macro avg       0.66      0.74      0.68      9043
+weighted avg       0.88      0.83      0.85      9043
+
+
+Confusion Matrix:
+[[6883 1102]
+ [ 400  658]]
+
+Recall (Sensitivity): 0.6219
+Precision: 0.3739
+F1-Score: 0.4670
+Accuracy: 0.8339
+
+  _log_warning(f"{cat_alias} in param dict is overridden.")
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      0.86      0.90      7985
+           1       0.37      0.62      0.46      1058
+
+    accuracy                           0.83      9043
+   macro avg       0.66      0.74      0.68      9043
+weighted avg       0.88      0.83      0.85      9043
+
+
+Confusion Matrix:
+[[6857 1128]
+ [ 406  652]]
+
+Recall (Sensitivity): 0.6163
+Precision: 0.3663
+F1-Score: 0.4595
+Accuracy: 0.8304
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.85      0.90      7985
+           1       0.36      0.63      0.46      1058
+
+    accuracy                           0.83      9043
+   macro avg       0.65      0.74      0.68      9043
+weighted avg       0.88      0.83      0.85      9043
+
+
+Confusion Matrix:
+[[6810 1175]
+ [ 390  668]]
+
+Recall (Sensitivity): 0.6314
+Precision: 0.3625
+F1-Score: 0.4605
+Accuracy: 0.8269
+
