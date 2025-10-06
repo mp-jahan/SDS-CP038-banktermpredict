@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/patri/OneDrive/Documents/SuperdataS/SDS-CP038-banktermpredict/SDS-CP038-banktermpredict/advanced/submissions/team-members/patrick-githendu/mlruns/849340208430580514/110d34f0237e48c7a1407b4941125142/artifacts
+end_time: 1758982910792
+entry_point_name: ''
+experiment_id: '849340208430580514'
+lifecycle_stage: active
+run_id: 110d34f0237e48c7a1407b4941125142
+run_name: Baseline_FFNN
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758982910506
+status: 4
+tags: []
+user_id: patri

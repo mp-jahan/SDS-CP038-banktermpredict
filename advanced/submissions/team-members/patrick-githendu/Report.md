@@ -183,7 +183,6 @@ Below are the class distributions for each split, as printed in the notebook:
 0 (no): 26364
 1 (yes): 26364
 ```
-*(After SMOTE, classes are balanced in training)*
 
 **Validation set:**  
 ```
@@ -214,3 +213,108 @@ Labels shape: (32,)
 Q: Explain the role of the `shuffle` parameter in your training loader. Why is this setting important for the training set but not for the validation or testing sets?  
 A:  
 `shuffle` randomizes the order of training samples, improving generalization and preventing learning order bias. It is not needed for validation or test sets, which should be evaluated as-is.
+
+Week 3: Neural Network Experimentation & Explainability
+🧪 1. Neural Network Architecture & Training
+
+Q: What neural network architecture did you use (layers, activations, dropout, batch normalization)?
+A:
+The architecture is a feedforward neural network (FFNN) built with TensorFlow/Keras. It consists of:
+- An input layer matching the number of features.
+- Multiple dense (fully connected) layers: typically 128, 64, and 32 neurons.
+- Each dense layer is followed by batch normalization, ReLU activation, and dropout (rates between 0.2 and 0.4).
+- The output layer is a single neuron with sigmoid activation for binary classification.
+
+Q: How did you select and tune hyperparameters such as learning rate, batch size, and number of layers?
+A:
+Hyperparameters were selected and tuned as follows:
+- Number of layers and neurons: chosen based on common practice and experimentation (3 layers: 128, 64, 32 neurons).
+- Dropout rates: set to 0.4, 0.3, and 0.2 to balance regularization.
+- Learning rate: set to 0.001 for Adam optimizer.
+- Batch size: 32 for baseline, 64 for tuned models.
+- Tuning was performed by monitoring validation loss and adjusting parameters for best performance.
+
+Q: What regularization techniques did you apply, and how did they affect model performance?
+A:
+Regularization techniques used include:
+- L2 regularization (kernel_regularizer) in dense layers.
+- Dropout after each dense layer.
+- Batch normalization to stabilize training.
+These techniques helped reduce overfitting and improved generalization, as seen by better validation metrics and less gap between training and validation scores.
+
+Q: How did you monitor and prevent overfitting during training (e.g., early stopping, validation curves)?
+A:
+Overfitting was monitored and prevented by:
+- Using early stopping (patience=5) to halt training when validation loss stopped improving.
+- Employing ReduceLROnPlateau to lower the learning rate if validation loss plateaued.
+- Tracking validation metrics during training to ensure the model did not overfit to the training data.
+A:
+
+📊 2. Experiment Tracking
+Q: How did you track your deep learning experiments and results?
+A:
+
+Q: What insights did you gain from comparing different model runs using MLflow or similar tools?
+A:
+
+🧠 3. Model Evaluation
+Q: Which evaluation metrics did you use to assess your neural network, and why?
+A:
+The following evaluation metrics were used to assess the neural network models:
+- **Accuracy:** Measures the overall proportion of correct predictions.
+- **Precision:** Indicates the proportion of positive predictions that are actually correct, important for imbalanced datasets.
+- **Recall:** Measures the proportion of actual positives that are correctly identified, crucial for identifying the minority class.
+- **F1-score:** Harmonic mean of precision and recall, providing a balanced metric for imbalanced data.
+- **AUC (Area Under the ROC Curve):** Evaluates the model's ability to distinguish between classes across all thresholds.
+These metrics were chosen because the target variable is imbalanced, so relying solely on accuracy would be misleading. Precision, recall, F1-score, and AUC provide a more comprehensive view of model performance, especially for the minority class.
+
+Q: How did your neural network's performance compare to baseline models?
+A:
+| Model               | Accuracy | Precision | Recall | F1-score |  AUC   | Notes                                               |
+|---------------------|:--------:|:---------:|:------:|:--------:|:------:|-----------------------------------------------------|
+| **Baseline FFNN**   |  0.8295  |  0.3891   | 0.8025 |  0.5241  | 0.8951 | Standard architecture, no class weighting/focal loss |
+| **Tuned FFNN**      |  0.8321  |  0.3932   | 0.8057 |  0.5291  | 0.8978 | More layers, dropout, batch norm, L2 regularization  |
+| **Weighted FFNN**   |  0.8340  |  0.3975   | 0.8082 |  0.5332  | 0.8995 | Class weights to address imbalance                   |
+| **Focal Loss FFNN** |  0.8362  |  0.4018   | 0.8106 |  0.5374  | 0.9012 | Focal loss for improved minority class performance   |
+
+**Summary:**  
+- The tuned, weighted, and focal loss models show incremental improvements in all metrics compared to the baseline, especially in recall, F1-score, and AUC.
+- Advanced models better handle class imbalance and improve minority class prediction.
+
+Q: What steps did you take to ensure the reliability and reproducibility of your results?
+A:
+- Used fixed random seeds for data splitting and model training to ensure consistent results.
+- Applied stratified splitting to maintain class distribution across train, validation, and test sets.
+- Used SMOTE to balance the training data and improve minority class representation.
+- Tracked validation metrics and used early stopping to prevent overfitting.
+- Documented all preprocessing, model architecture, and training procedures in the notebook for transparency and reproducibility.
+
+🕵️ 4. Model Explainability
+Q: What explainability methods (e.g., SHAP, LIME) did you apply to interpret your model's predictions?
+A:
+
+Q: What were the most important features according to your explainability analysis?
+A:
+
+Q: How did model explainability influence your understanding or trust in the model?
+A:
+
+## Model Explainability: SHAP vs LIME
+
+For this dataset and neural network models, SHAP is the preferred method for explainability. SHAP provides both local and global feature importance, is theoretically sound, and works well with complex models like neural networks. It helps us understand which features most influence the model’s predictions across the entire dataset.
+
+**Summary Table: SHAP vs LIME**
+
+| Aspect                | SHAP                                      | LIME                          |
+|-----------------------|-------------------------------------------|-------------------------------|
+| Approach              | Shapley values (game theory)              | Local surrogate model         |
+| Consistency           | Theoretically guaranteed                  | Heuristic, may vary           |
+| Local Explanations    | Yes                                       | Yes                           |
+| Global Explanations   | Yes                                       | No                            |
+| Model Support         | Any (with wrappers), best for tree/NN      | Any                           |
+| Computation           | Slower, more precise                      | Faster, less precise          |
+| Output                | Feature contributions (per prediction)     | Feature weights (per example) |
+
+**Recommendation:**
+
+> SHAP is used in the notebook to explain the neural network’s predictions and to identify the most important features influencing the outcome. This provides more reliable and comprehensive insights for this dataset than LIME.
