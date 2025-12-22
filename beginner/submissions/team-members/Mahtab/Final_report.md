@@ -10,17 +10,29 @@ A:  I created a local Python 3.12.6 virtual environment (.venv) in the project f
 
 
 Q: What steps did you take to load and inspect the dataset?  
-A:  
+A:
+-1) I loaded  the dataset bank_full.csv using pd.read_csv() taking look the first 30 rows thorough .head(30)
+-2)  using .shape to confirm the size of df (45211,17)
+-3) I verified the structure with .info() which showed 7 numeric(int64) features, including ( age, balance,day,duration,campaign,pdays,previous) and 10 categorical(object) featires including (job,martial,education, housing , loan,contact,month, poutcome,y)
+
+
 
 ---
 
 ### 📦 2. Data Integrity & Structure
 
 Q: Did you find any missing, duplicate, or incorrectly formatted entries in the dataset?  
-A:  
+-1) I did not find any missing values using isnull().sum() and additional check for unstructured placehodres(e.g., empty string,"n/a") returend 0 across all 17 column.
+-2) I verified duplicated rows using .duplicated.sum() returened 0 duplicate rows.
+
+-3) Some categorical variables (e.g., job. education,contact, putcome) included the category 'unknown', which effectively acts as a placeholder for misssing information.
 
 Q: Are all data types appropriate for their features (e.g., numeric, categorical)?  
-A:  
+Yes, the datatset columns alinged with their expected types:
+**##** Numeric(64):
+(age, balance, day, duration, campaign,pdays,previous) all sorted as integers with no irregular formatting.
+**##** Categorical(object): 
+(job,martial,education, housing , loan,contact,month, poutcome,y) all stored as text labels.
 
 ---
 
